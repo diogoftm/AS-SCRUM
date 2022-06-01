@@ -6,11 +6,15 @@ from users.models import UserProfile
 
 from django.contrib.auth.models import User
 from .models import Task,Project,Sprint
-from .forms import TaskForm, ProjectForm
+from .forms import *
 from django.http import HttpResponseRedirect
 
 
 def home(request):
+    if request.user.is_authenticated:
+        user_prof = UserProfile.objects.filter(user=request.user).first()
+        return render(request, 'scrum/base.html', {'title': 'Home', 'projects': user_prof.projects.all().values()})
+
     return render(request,'scrum/base.html', {'title': 'Home'})
 
 
@@ -40,8 +44,10 @@ def new_task(request, project_id=None):
             Project.objects.filter(id=project_id).first().tasks.add(task)
             return HttpResponseRedirect(f'/projects/{project_id}')
     else:
+        user_prof = UserProfile.objects.filter(user=request.user).first()
         form = TaskForm(**{'project': project_id})
-    return render(request, 'scrum/creation_form.html', {'title': f"new task", 'form': form })
+    return render(request, 'scrum/creation_form.html', {'title': f"new task", 'form': form, 'projects': user_prof.projects.all().values(), })
+
 
 @login_required
 def new_project(request):
@@ -59,15 +65,16 @@ def new_project(request):
             UserProfile.objects.filter(user=request.user).first().projects.add(proj)
             return HttpResponseRedirect(f'/projects/{proj.id}')
     else:
+        user_prof = UserProfile.objects.filter(user=request.user).first()
         form = ProjectForm()
-    return render(request, 'scrum/creation_form.html', {'title': f"new project", 'form': form})
+    return render(request, 'scrum/creation_form.html', {'title': f"new project", 'form': form, 'projects': user_prof.projects.all().values()})
 
 
 @login_required
 def product_backlog(request, project_id=None):
     proj = Project.objects.filter(id=project_id).first()
-
-    return render(request, 'scrum/product_backlog.html', {'title': f"Product Backlog", 'tasks': proj.tasks.values(),
+    user_prof = UserProfile.objects.filter(user=request.user).first()
+    return render(request, 'scrum/product_backlog.html', {'title': f"Product Backlog", 'projects': user_prof.projects.all().values(), 'tasks': proj.tasks.values(),
                                                           'sprints': proj.sprints.values()})
 
 
@@ -94,7 +101,8 @@ def create_sprint(request, project_id=None):
 @login_required
 def sprint(request, project_id=None, sprint_number=None):
     tasks = Project.objects.filter(id=project_id).first().sprints.get().tasks.values()
-    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks})
+    user_prof = UserProfile.objects.filter(user=request.user).first()
+    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks, 'projects': user_prof.projects.all().values()})
 
 
 

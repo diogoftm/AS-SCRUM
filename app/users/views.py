@@ -31,8 +31,14 @@ def logout(request, **kwargs):
 @login_required
 def personal_dashboard(request):
     user_prof = UserProfile.objects.filter(user=request.user).first()
+    tasks = []
+    for proj in user_prof.projects.all():
+        for task in proj.tasks.all():
+            for user in task.assigned_for.all():
+                if user == request.user:
+                    tasks.append(task)
+
     return render(request, 'users/personal_dashboard.html', {'title': f"{user_prof.projects.first().title}'s dashboard",
-                                                             'permission': request.user.has_perm('master', user_prof.projects.first()),
-                                                             'projects': user_prof.projects.all().values()})
+                                                             'projects': user_prof.projects.all().values(), 'tasks': tasks})
 
 
