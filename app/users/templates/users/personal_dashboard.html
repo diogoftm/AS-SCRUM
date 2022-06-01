@@ -3,9 +3,13 @@
     <div class="content-section">
         <h1>Personal Dashboard</h1>
     </div>
-    {% if permission %}
-        <h2>SM - {{ permission }}</h2>
-    {% else %}
-        <h2>SM</h2>
-    {% endif %}
+    {% for project in projects%}
+        <p>{{ project }}</p>
+    {% endfor %}
+    <h2>tasks</h2>
+    {% for task in tasks %}
+        <p>{{ task.title }}</p>
+    {% endfor %}
+
+
 {% endblock content %}

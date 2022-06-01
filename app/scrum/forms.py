@@ -30,9 +30,13 @@ class ProjectForm(forms.Form):
     title = forms.CharField(label='Title', max_length=20)
     sprint_duration = forms.IntegerField(min_value=1, max_value=10)
     description = forms.CharField(widget=forms.Textarea(attrs={'name': 'description', 'rows': '3', 'cols': '5'}))
-    password = forms.CharField(label='Password', max_length=15)
+    password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = Task
         fields = ('title', 'description', 'sprint_duration', 'password')
 
+
+class JoinProjectForm(forms.Form):
+    id = forms.IntegerField(label='Title')
+    password = forms.CharField(widget=forms.PasswordInput())
