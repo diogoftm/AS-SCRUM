@@ -1,0 +1,100 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
+from django.contrib import messages
+from django.shortcuts import render
+from users.models import UserProfile
+
+from django.contrib.auth.models import User
+from .models import Task,Project,Sprint
+from .forms import TaskForm, ProjectForm
+from django.http import HttpResponseRedirect
+
+
+def home(request):
+    return render(request,'scrum/base.html', {'title': 'Home'})
+
+
+def project(request, project_id=None):
+    user_prof = UserProfile.objects.filter(user=request.user).first()
+    proj = Project.objects.filter(id=project_id)
+    return render(request, 'scrum/project_overview.html', {'title': f"{user_prof.projects.first().title} dashboard",
+                                                             'permission': request.user.has_perm('master',
+                                                                                                 user_prof.projects.first()),
+                                                             'projects': user_prof.projects.all().values(),
+                                                             'project': proj.values()[0],
+                                                             'team': User.objects.filter(groups__id=proj.first().group.id).values()})
+
+@login_required
+def new_task(request, project_id=None):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            task = Task.objects.create(title=data.get('title'), annotations=data.get('annotations'),
+                                       as_a=data.get('as_a'), i_want=data.get('i_want'),
+                                       so_that=data.get('so_that'), points=data.get('points'),
+                                       priority=data.get('priority'), created_by=request.user, state=1)
+            for user in data.get('assign_for'):
+                task.assigned_for.add(user)
+            task.save()
+            Project.objects.filter(id=project_id).first().tasks.add(task)
+            return HttpResponseRedirect(f'/projects/{project_id}')
+    else:
+        form = TaskForm(**{'project': project_id})
+    return render(request, 'scrum/creation_form.html', {'title': f"new task", 'form': form })
+
+@login_required
+def new_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            proj = Project.objects.create(title=data.get('title'), description=data.get('description'),
+                                       created_by=request.user, sprint_duration=data.get('sprint_duration'), state=1,
+                                       password=data.get('password'), group_id=1)
+            group = Group.objects.get_or_create(name=f'Project {proj.id}')
+            group.user_set.add(request.user)
+            proj.group_id = group[0].id
+            proj.save()
+            UserProfile.objects.filter(user=request.user).first().projects.add(proj)
+            return HttpResponseRedirect(f'/projects/{proj.id}')
+    else:
+        form = ProjectForm()
+    return render(request, 'scrum/creation_form.html', {'title': f"new project", 'form': form})
+
+
+@login_required
+def product_backlog(request, project_id=None):
+    proj = Project.objects.filter(id=project_id).first()
+
+    return render(request, 'scrum/product_backlog.html', {'title': f"Product Backlog", 'tasks': proj.tasks.values(),
+                                                          'sprints': proj.sprints.values()})
+
+
+@login_required
+def add_task_sprint(request, project_id=None):
+    proj = Project.objects.filter(id=project_id).first()
+    task = proj.tasks.filter(id=request.POST.get("task_id")).first()
+    sprint = proj.sprints.filter(number=request.POST.get("sprint_number")).first()
+    sprint.tasks.add(task)
+    messages.success(request, f'tarefa adicionada ao sprint {request.POST.get("sprint_number")}!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def create_sprint(request, project_id=None):
+    proj = Project.objects.filter(id=project_id).first()
+    n = proj.sprints.count() + 1
+    sprint = Sprint.objects.create(number=n, state=1)
+    sprint.save()
+    proj.sprints.add(sprint)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def sprint(request, project_id=None, sprint_number=None):
+    tasks = Project.objects.filter(id=project_id).first().sprints.get().tasks.values()
+    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks})
+
+
+

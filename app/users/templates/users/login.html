@@ -1,0 +1,20 @@
+{% extends "scrum/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container py-5 h-100" xmlns="http://www.w3.org/1999/html">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+
+          <div class="card-body p-5 text-left">
+
+            <h3 class="mb-5">Sign in</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{form | crispy}}
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

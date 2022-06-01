@@ -1,0 +1,4 @@
+Users  - username, email, password
+Tarefa -
+Projeto - nome,
+

@@ -1,0 +1,11 @@
+{% extends "scrum/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <h1>Personal Dashboard</h1>
+    </div>
+    {% if permission %}
+        <h2>SM - {{ permission }}</h2>
+    {% else %}
+        <h2>SM</h2>
+    {% endif %}
+{% endblock content %}
