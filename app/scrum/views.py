@@ -13,9 +13,9 @@ from django.http import HttpResponseRedirect
 def home(request):
     if request.user.is_authenticated:
         user_prof = UserProfile.objects.filter(user=request.user).first()
-        return render(request, 'scrum/base.html', {'title': 'Home', 'projects': user_prof.projects.all().values()})
+        return render(request, 'scrum/.html', {'title': 'Home', 'projects': user_prof.projects.all().values()})
 
-    return render(request,'scrum/base.html', {'title': 'Home'})
+    return render(request,'scrum/index.html', {'title': 'Home'})
 
 
 def project(request, project_id=None):
