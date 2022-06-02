@@ -12,8 +12,9 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
             username = form.cleaned_data.get('username')
+            UserProfile.objects.create(user= user)
             messages.success(request, f'Account created for {username}!')
             return redirect('home')
     else:
