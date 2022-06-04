@@ -38,5 +38,5 @@ class ProjectForm(forms.Form):
 
 
 class JoinProjectForm(forms.Form):
-    id = forms.IntegerField(label='Title')
+    id = forms.IntegerField(label='ID')
     password = forms.CharField(widget=forms.PasswordInput())

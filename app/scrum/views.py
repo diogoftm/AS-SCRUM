@@ -43,6 +43,7 @@ def new_task(request, project_id=None):
             task.save()
             Project.objects.filter(id=project_id).first().tasks.add(task)
             return HttpResponseRedirect(f'/projects/{project_id}')
+
     else:
         user_prof = UserProfile.objects.filter(user=request.user).first()
         form = TaskForm(**{'project': project_id})
@@ -67,7 +68,7 @@ def new_project(request):
     else:
         user_prof = UserProfile.objects.filter(user=request.user).first()
         form = ProjectForm()
-    return render(request, 'scrum/creation_form.html', {'title': f"new project", 'form': form, 'projects': user_prof.projects.all().values()})
+        return render(request, 'scrum/creation_form.html', {'title': f"new project", 'form': form, 'projects': user_prof.projects.all().values()})
 
 
 @login_required
@@ -105,4 +106,32 @@ def sprint(request, project_id=None, sprint_number=None):
     return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks, 'projects': user_prof.projects.all().values()})
 
 
-
+@login_required
+def join_project(request):
+    if request.method == 'POST':
+        form = JoinProjectForm(request.POST)
+        if form.is_valid():
+            print("AQUI")
+            data = form.cleaned_data
+            proj = Project.objects.filter(id=data.get("id")).first()
+            if data.get("password") == proj.password:
+                print("password correta")
+                user_prof = UserProfile.objects.filter(user=request.user).first()
+                user_prof.projects.add(proj)
+                group = Group.objects.get(name=f'Project {data.get("id")}')
+                group.user_set.add(request.user)
+                messages.success(request, f'Success!')
+                return project(request, data.get("id"))
+            else:
+                messages.success(request, f'Incorrect password or wrong project id!')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        else:
+            user_prof = UserProfile.objects.filter(user=request.user).first()
+            form = JoinProjectForm()
+            return render(request, 'scrum/creation_form.html',
+                          {'title': f"join a project", 'form': form, 'projects': user_prof.projects.all().values()})
+    else:
+        user_prof = UserProfile.objects.filter(user=request.user).first()
+        form = JoinProjectForm()
+        return render(request, 'scrum/creation_form.html',
+                      {'title': f"join a project", 'form': form, 'projects': user_prof.projects.all().values()})
