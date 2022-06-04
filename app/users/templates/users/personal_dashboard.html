@@ -1,177 +1,188 @@
 {% extends "scrum/base.html" %}
 {% block content %}
-    <div class="content-section">
-        <h1>Personal Dashboard</h1>
-    </div>
-    {% for project in projects%}
-        <p>{{ project }}</p>
-    {% endfor %}
-    <h2>tasks</h2>
-    {% for task in tasks %}
-        <p>{{ task.title }}</p>
-    {% endfor %}
+{% load static %}
+<!--
+   <div class="content-section">
+       <h1>Personal Dashboard</h1>
+   </div>
+   {% for project in projects%}
+       <p>{{ project }}</p>
+   {% endfor %}
+   <h2>tasks</h2>
+   {% for task in tasks %}
+       <p>{{ task.title }}</p>
+   {% endfor %}
+   -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/all.min.css'  %}">
+<!-- Ekko Lightbox -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/ekko-lightbox.css' %}">
+<!-- Theme style -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/adminlte.min.css' %}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/OverlayScrollbars.min.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback%22%3E">
 
-    <div class="container-fluid h-100">
-        <div class="card card-row card-secondary">
-            <div class="card-header">
-                <h3 class="card-title"> Backlog </h3>
+
+<div class="content-wrapper kanban" style="min-height: 646px;">
+   <section class="content-header">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-6">
+               <h1>Personal Dashboard</h1>
             </div>
-            <div class="card-body">
-                <div class="card card-info card-outline">
-                    <div class="card-header">
-                        <h5 class="card-title">Create Labels</h5>
-                        <div class="card-tools">
-                            <a href="#" class="btn btn-tool btn-link">#3</a>
+            <div class="col-sm-6 d-none d-sm-block">
+               <ol class="breadcrumb float-sm-right">
+               </ol>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="content pb-3">
+      <div class="container-fluid h-100">
+         <div style="height: 700px"; class="card card-row card-secondary">
+            <div class="card-header">
+               <h3 style="font-size: 30px"; class="card-title">
+                  Tarefas
+               </h3>
+            </div>
+            
+            
+            <section class="content pb-3">
+                <div class="container-fluid h-100">
+                   <div class="card card-row card-secondary" style="width: 270px; float:left; height:400px; background:white; margin:10px">
+                      <div class="card-header">
+                         <h3 style="font-size: 25px" class="card-title">
+                            To do 
+                         </h3>
+                      </div>
+                      <div class="card-collumn">
+                        <div class="card">
+                          <div style= "height: 150px"; class="card-body">
+                            <h5 class="card-title">Fazer Database</h5>
+                            <p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>
+                          </div>
+                          <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
+                            <small class="text-muted">3 dias &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a style="color: white"; href="/projects/5">#5</a></small>
+                          </div>
+                        </div>
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Connectar cliente e servidor</h5>
+                            <p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>
+                          </div>
+                          <a style="color: grey;" href="/projects/3" class="btn btn-tool btn-link">#3</a>
                             <a href="#" class="btn btn-tool">
                                 <i class="fas fa-pen"></i>
                             </a>
+                          <div style= "background-color: rgb(29, 129, 34)"; class="card-footer">
+                            <small class="text-muted">28 dias</small>
+                          </div>
                         </div>
-                    </div>
-                <div class="card-body">
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox1" disabled="">
-        <label for="customCheckbox1" class="custom-control-label">Bug</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox2" disabled="">
-        <label for="customCheckbox2" class="custom-control-label">Feature</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox3" disabled="">
-        <label for="customCheckbox3" class="custom-control-label">Enhancement</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox4" disabled="">
-        <label for="customCheckbox4" class="custom-control-label">Documentation</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox5" disabled="">
-        <label for="customCheckbox5" class="custom-control-label">Examples</label>
-        </div>
-        </div>
-        </div>
-        <div class="card card-primary card-outline">
-        <div class="card-header">
-        <h5 class="card-title">Create Issue template</h5>
-        <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-link">#4</a>
-        <a href="#" class="btn btn-tool">
-        <i class="fas fa-pen"></i>
-        </a>
-        </div>
-        </div>
-        <div class="card-body">
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox1_1" disabled="">
-        <label for="customCheckbox1_1" class="custom-control-label">Bug Report</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-        <input class="custom-control-input" type="checkbox" id="customCheckbox1_2" disabled="">
-        <label for="customCheckbox1_2" class="custom-control-label">Feature Request</label>
-        </div>
-        </div>
-        </div>
-        <div class="card card-primary card-outline">
-        <div class="card-header">
-        <h5 class="card-title">Create PR template</h5>
-        <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-link">#6</a>
-        <a href="#" class="btn btn-tool">
-        <i class="fas fa-pen"></i>
-        </a>
-        </div>
-        </div>
-        </div>
-        <div class="card card-light card-outline">
-        <div class="card-header">
-        <h5 class="card-title">Create Actions</h5>
-        <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-link">#7</a>
-        <a href="#" class="btn btn-tool">
-        <i class="fas fa-pen"></i>
-        </a>
-        </div>
-        </div>
-        <div class="card-body">
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-         nascetur ridiculus mus.
-        </p>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="card card-row card-primary">
-        <div class="card-header">
-        <h3 class="card-title">
-        To Do
-        </h3>
-        </div>
-        <div class="card-body">
-        <div class="card card-primary card-outline">
-        <div class="card-header">
-        <h5 class="card-title">Create first milestone</h5>
-        <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-link">#5</a>
-        <a href="#" class="btn btn-tool">
-        <i class="fas fa-pen"></i>
-        </a>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="card card-row card-default">
-        <div class="card-header bg-info">
-        <h3 class="card-title">
-        In Progress
-        </h3>
-        </div>
-        <div class="card-body">
-        <div class="card card-light card-outline">
-        <div class="card-header">
-        <h5 class="card-title">Update Readme</h5>
-        <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-link">#2</a>
-        <a href="#" class="btn btn-tool">
-        <i class="fas fa-pen"></i>
-        </a>
-        </div>
-        </div>
-        <div class="card-body">
-        <p>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        Aenean commodo ligula eget dolor. Aenean massa.
-        Cum sociis natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus.
-        </p>
-        </div>
-        </div>
-        </div>
-        </div>
-        <div class="card card-row card-success">
-        <div class="card-header">
-        <h3 class="card-title">
-        Done
-        </h3>
-        </div>
-        <div class="card-body">
-        <div class="card card-primary card-outline">
-        <div class="card-header">
-        <h5 class="card-title">Create repo</h5>
-        <div class="card-tools">
-        <a href="#" class="btn btn-tool btn-link">#1</a>
-        <a href="#" class="btn btn-tool">
-        <i class="fas fa-pen"></i>
-        </a>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Verificar ligações externas</h5>
+                            <p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>
+                          </div>
+                          <a style="color: white;" href="/projects/4" class="btn btn-tool btn-link">#4</a>
+                            <a href="#" class="btn btn-tool">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                          <div style= "background-color: rgb(221, 255, 29); color: white"; class="card-footer">
+                            <small> <p style="color: white"; class="text-muted">13 dias</p></small>
+                          </div>
+                        </div>
+                    </section>
+            <!--<section class="content pb-3">
+                <div class="container-fluid h-100">
+                   <div class="card card-row card-secondary" style="width: 270px; float:left; height:200px; background:white; margin:10px">
+                      <div class="card-header">
+                         <h3 style="font-size: 25px" class="card-title">
+                            In Progress
+                         </h3>
+                      </div>
+                   </div>
+                </section>
+            <section class="content pb-3">
+                <div class="container-fluid h-100">
+                   <div class="card card-row card-secondary" style="width: 270px; float:left; height:200px; background:white; margin:10px">
+                      <div class="card-header">
+                         <h3 style="font-size: 25px" class="card-title">
+                            Done
+                         </h3>
+                      </div>
+                      
+                   </div>
+                </section>
+            -->
+         <!--<div class="card card-row card-primary">
+            <div class="card-header">
+               <h3 class="card-title">
+                  To Do
+               </h3>
+            </div>
+            <div class="card-body">
+               <div class="card card-primary card-outline">
+                  <div class="card-header">
+                     <h5 class="card-title">Create first milestone</h5>
+                     <div class="card-tools">
+                        <a href="#" class="btn btn-tool btn-link">#5</a>
+                        <a href="#" class="btn btn-tool">
+                        <i class="fas fa-pen"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="card card-row card-default">
+            <div class="card-header bg-info">
+               <h3 class="card-title">
+                  In Progress
+               </h3>
+            </div>
+            <div class="card-body">
+               <div class="card card-light card-outline">
+                  <div class="card-header">
+                     <h5 class="card-title">Update Readme</h5>
+                     <div class="card-tools">
+                        <a href="#" class="btn btn-tool btn-link">#2</a>
+                        <a href="#" class="btn btn-tool">
+                        <i class="fas fa-pen"></i>
+                        </a>
+                     </div>
+                  </div>
+                  <div class="card-body">
+                     <p>
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                        Aenean commodo ligula eget dolor. Aenean massa.
+                        Cum sociis natoque penatibus et magnis dis parturient montes,
+                        nascetur ridiculus mus.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="card card-row card-success">
+            <div class="card-header">
+               <h3 class="card-title">
+                  Done
+               </h3>
+            </div>
+            <div class="card-body">
+               <div class="card card-primary card-outline">
+                  <div class="card-header">
+                     <h5 class="card-title">Create repo</h5>
+                     <div class="card-tools">
+                        <a href="#" class="btn btn-tool btn-link">#1</a>
+                        <a href="#" class="btn btn-tool">
+                        <i class="fas fa-pen"></i>
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            --></div>
+         </div>
+      </div>
+   </section>
+</div>
 {% endblock content %}
