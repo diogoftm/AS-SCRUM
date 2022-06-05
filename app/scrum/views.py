@@ -21,11 +21,12 @@ def home(request):
 def project(request, project_id=None):
     user_prof = UserProfile.objects.filter(user=request.user).first()
     proj = Project.objects.filter(id=project_id)
-    return render(request, 'scrum/project_overview.html', {'title': f"{user_prof.projects.first().title} dashboard",
+    return render(request, 'scrum/project_overview.html', {'title': f"{proj.first().title} dashboard",
                                                              'permission': request.user.has_perm('master',
                                                                                                  user_prof.projects.first()),
                                                              'projects': user_prof.projects.all().values(),
                                                              'project': proj.values()[0],
+                                                             'sprints': proj.first().sprints.values(),
                                                              'team': User.objects.filter(groups__id=proj.first().group.id).values()})
 
 @login_required

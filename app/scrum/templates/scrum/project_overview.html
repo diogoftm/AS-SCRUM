@@ -1,7 +1,7 @@
 {% extends "scrum/base.html" %}
 {% block content %}
 
-
+<!--
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="bootstrap" viewBox="0 0 118 94">
     <title>Bootstrap</title>
@@ -100,6 +100,45 @@
       </div>
     </div>
   </div>
-</main>
+</main>-->
+<p><span style="font-size: 3em;">{{project.title}}</span><span>
+  estado:
+  {% if project.state == 1 %}
+     in progress
+  {% elif project.state == 2 %}
+    finished
+  {% endif %}
+</span></p>
+<p><h5>{{project.description}}</h5>
+</p>
+<p>duracao sprint: {{project.sprint_duration}}</p>
 
+<p><h5>sprints</h5></p>
+<table >
+<tr>
+{% for sprint in sprints %}
+<td style="padding-right: 3em;"><p>sprint #{{sprint.number}}</p>
+<p>estado:
+  {% if sprint.state == 1 %}
+   to start
+  {% elif sprint.state == 2 %}
+  in progress
+  {% elif sprint.state == 3 %}
+  finished
+  {% endif %}
+</p></td>
+{% endfor %}
+</tr>
+</table>
+<a href="{% url 'create-sprint' project.id %}">create sprint</a>
+
+<br>
+<p><h2>Equipa</h2></p>
+<table>
+  <tr>
+  {% for member in team %}
+<td style="padding-right: 1.5em;">{{member.username}}</td> 
+{% endfor %}
+</tr>
+</table>
 {% endblock content %}
