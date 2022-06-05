@@ -1,8 +1,24 @@
-{% extends "scrum/base2.html" %}
-{% block content %}
+<!doctype html>
+<html lang="pt" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% if title %}
+        <title>SM - {{ title }}</title>
+    {% else %}
+        <title>SM</title>
+    {% endif %}
+
+  </head>
+
+  <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="bootstrap" viewBox="0 0 118 94">
     <title>Bootstrap</title>
     <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
@@ -60,85 +76,102 @@
     <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
   </symbol>
 </svg>
+    <div class="container py-3">
+        <header class="pb-3 mb-4">
+            <nav class="navbar navbar-light bg-white fixed-top container">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                        <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                    </svg>
+                </a>
 
-<main class="d-flex flex-nowrap">
-  <div class="d-flex flex-column bg-light" style="width: 4.5rem;">
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-      <li class="nav-item">
-        <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Home"><use xlink:href="#home"/></svg>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
+        <a href="/projects/{{project.id}}" class="nav-link py-3 border-bottom rounded-0" title="Project Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
           <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Dashboard"><use xlink:href="#speedometer2"/></svg>
         </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
+
+
+        <a href="/projects/{{project.id}}/product_backlog" class="nav-link py-3 border-bottom rounded-0" title="Product Backlog" data-bs-toggle="tooltip" data-bs-placement="right">
           <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Orders"><use xlink:href="#table"/></svg>
         </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
+
+
+        <a href="/projects/{{project.id}}/sprints" class="nav-link py-3 border-bottom rounded-0" title="Sprints"  data-bs-placement="right">
           <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Products"><use xlink:href="#grid"/></svg>
         </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" title="Customers" data-bs-toggle="tooltip" data-bs-placement="right">
-          <svg class="bi pe-none" width="24" height="24" role="img" aria-label="Customers"><use xlink:href="#people-circle"/></svg>
-        </a>
-      </li>
-    </ul>
-  </div>
 
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        {% if user.is_authenticated %}
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Projects
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                            {% for p in projects %}
+                                <li><a class="dropdown-item" href='/projects/{{p.id}}'>{{p.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                      </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{%url 'join-project'%}"><span class="fs-3px-2"> Join Project</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{%url 'new-project'%}"><span class="fs-3px-2"> Create Project</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{%url 'personal-dashboard'%}"><span class="fs-3px-2"> Personal Dashboard </span></a>
+                      </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{%url 'logout'%}"><span class="fs-3px-2"> Log Out </span></a>
+                      </li>
 
-  <div class="d-flex flex-column align-items-stretch flex-shrink-0">
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-      <div class="list-group list-group-flush border-bottom scrollarea" style="height:800px; overflow-y: scroll;">
+                    </ul>
+                      {% else %}
+                      <li class="nav-item">
+                        <a class="nav-link" href="{%url 'register'%}"><span class="fs-3px-2"> Sign Up </span></a>
+                        <a class="nav-link" href="{%url 'login'%}"><span class="fs-3px-2"> Log In </span></a>
+                      </li>
+                    </ul>
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+            </nav>
+        </header>
 
-      </div>
+        <main>
+            <div class="p-4 mb-4 bg-light rounded-6">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+            </div>
+
+        </main>
+
+        <footer class="pt-3 mt-4 text-muted border-top">
+            <div class="col-md-9">&copy; 2022 v1</div>
+        </footer>
     </div>
-  </div>
-</main>-->
-<p><span style="font-size: 3em;">{{project.title}}</span><span>
-  estado:
-  {% if project.state == 1 %}
-     in progress
-  {% elif project.state == 2 %}
-    finished
-  {% endif %}
-</span></p>
-<p><h5>{{project.description}}</h5>
-</p>
-<p>duracao sprint: {{project.sprint_duration}}</p>
 
-<p><h5>sprints</h5></p>
-<table >
-<tr>
-{% for sprint in sprints %}
-<td style="padding-right: 3em;"><p>sprint #{{sprint.number}}</p>
-<p>estado:
-  {% if sprint.state == 1 %}
-   to start
-  {% elif sprint.state == 2 %}
-  in progress
-  {% elif sprint.state == 3 %}
-  finished
-  {% endif %}
-</p></td>
-{% endfor %}
-</tr>
-</table>
-<a href="{% url 'create-sprint' project.id %}">create sprint</a>
+  </body>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
 
-<br>
-<p><h2>Equipa</h2></p>
-<table>
-  <tr>
-  {% for member in team %}
-<td style="padding-right: 1.5em;">{{member.username}}</td> 
-{% endfor %}
-</tr>
-</table>
-{% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!--<script src='script/script.js' type="text/javascript"></script>-->
+
+</html>
