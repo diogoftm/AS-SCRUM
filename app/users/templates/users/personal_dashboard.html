@@ -22,13 +22,32 @@
 <link rel="stylesheet" type="text/css" href="{% static 'users/static/css/OverlayScrollbars.min.css' %}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback%22%3E">
 
+<style>
+    h1 {
+        color:white;
+    }
+    div.scroll {
+        
+        background-color: white;
+        width: 270px;
+        height: 500px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align:justify;
+    }
+
+    h5.card-title {
+        text-align: left;
+    }
+</style>
+
 
 <div class="content-wrapper kanban" style="min-height: 646px;">
    <section class="content-header">
       <div class="container-fluid">
          <div class="row">
             <div class="col-sm-6">
-               <h1>Personal Dashboard</h1>
+               <h2>Personal Dashboard</h2>
             </div>
             <div class="col-sm-6 d-none d-sm-block">
                <ol class="breadcrumb float-sm-right">
@@ -39,7 +58,7 @@
    </section>
    <section class="content pb-3">
       <div class="container-fluid h-100">
-         <div style="height: 700px"; class="card card-row card-secondary">
+         <div style="height: 640px"; class="card card-row card-secondary">
             <div class="card-header">
                <h3 style="font-size: 30px"; class="card-title">
                   Tarefas
@@ -49,140 +68,510 @@
             
             <section class="content pb-3">
                 <div class="container-fluid h-100">
-                   <div class="card card-row card-secondary" style="width: 270px; float:left; height:400px; background:white; margin:10px">
-                      <div class="card-header">
+                   <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+                    <div class="card-header">
                          <h3 style="font-size: 25px" class="card-title">
                             To do 
                          </h3>
                       </div>
                       <div class="card-collumn">
+                        <div class="scroll">
                         <div class="card">
-                          <div style= "height: 150px"; class="card-body">
+                          <div style= "height: 100%"; class="card-body">
+                            <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
                             <h5 class="card-title">Fazer Database</h5>
-                            <p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>
+                            
                           </div>
                           <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                            <small class="text-muted">3 dias &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a style="color: white"; href="/projects/5">#5</a></small>
+                            <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
                           </div>
                         </div>
+                        <br>
                         <div class="card">
-                          <div class="card-body">
+                          <div style= "height: 100%"; class="card-body">
                             <h5 class="card-title">Connectar cliente e servidor</h5>
-                            <p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>
+                            <!--<p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>-->
                           </div>
-                          <a style="color: grey;" href="/projects/3" class="btn btn-tool btn-link">#3</a>
-                            <a href="#" class="btn btn-tool">
-                                <i class="fas fa-pen"></i>
-                            </a>
                           <div style= "background-color: rgb(29, 129, 34)"; class="card-footer">
-                            <small class="text-muted">28 dias</small>
+                            <small style="color: white">28 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
                           </div>
                         </div>
+                        <br>
                         <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title">Verificar ligações externas</h5>
-                            <p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>
+                          <div style= "height: 100%"; class="card-body">
+                            <h5 class="card-title">Verificar ligações</h5>
+                            <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
                           </div>
-                          <a style="color: white;" href="/projects/4" class="btn btn-tool btn-link">#4</a>
-                            <a href="#" class="btn btn-tool">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                          <div style= "background-color: rgb(221, 255, 29); color: white"; class="card-footer">
-                            <small> <p style="color: white"; class="text-muted">13 dias</p></small>
+                          <div style= "background-color: rgb(192, 215, 59); color: white"; class="card-footer">
+                            <small style="color: white"> 13 dias  <a style="color: white; float: right"; href="/projects/4">#4</a></small>
                           </div>
                         </div>
+                        <br>
+                        <div class="card">
+                          <div style= "height: 100%"; class="card-body">
+                            <h5 class="card-title">Criar tarefas</h5>
+                            <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                          </div>
+                          <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                            <small style="color: white"> 45 dias  <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <h5 class="card-title">Navegar entre projetos</h5>
+                              <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                            </div>
+                            <div style= "background-color: rgb(230, 27, 27); color: white"; class="card-footer">
+                              <small style="color: white"> 1 dia &nbsp&nbsp&nbsp <a style="color: white; float: right"; href="/projects/2">#2</a></small>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <h5 class="card-title">Gerir user</h5>
+                              <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                            </div>
+                            <div style= "background-color: rgb(192, 215, 59); color: white"; class="card-footer">
+                              <small style="color: white"> 9 dias &nbsp&nbsp <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <h5 class="card-title">Criar conta</h5>
+                              <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                            </div>
+                            <div style= "background-color: rgb(230, 27, 27); color: white"; class="card-footer">
+                              <small style="color: white"> 4 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                            </div>
+                          </div>
+                          <br>
+                        </div>
+                    </div>
+                </div>
+                       <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+                          <div class="card-header">
+                             <h3 style="font-size: 25px" class="card-title">
+                                In Progress
+                             </h3>
+                          </div>
+                    <div class="card-collumn">
+                        <div class="scroll">
+                          <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                              <h5 class="card-title">Fazer projeto de AC1</h5>
+                              
+                            </div>
+                            <div style= "background-color: rgb(29, 129, 34)"; class="card-footer">
+                              <small style="color: white">29 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <h5 class="card-title">Estudar para POO</h5>
+                              <!--<p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>-->
+                            </div>
+                            <div style= "background-color: rgb(192, 215, 59)"; class="card-footer">
+                              <small style="color: white">10 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <h5 class="card-title">Adicionar bananas à lista de compras</h5>
+                              <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                            </div>
+                            <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                              <small style="color: white"> 16 dias  <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                            <div style= "height: 100%"; class="card-body">
+                              <h5 class="card-title">Enviar email ao boss</h5>
+                              <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                            </div>
+                            <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                              <small style="color: white"> 27 dias  <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <h5 class="card-title">Fazer tabela Excel</h5>
+                                <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                              </div>
+                              <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                <small style="color: white"> 32 dias <a style="color: white; float: right"; href="/projects/2">#2</a></small>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <h5 class="card-title">Marcar jantar com a malta</h5>
+                                <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                              </div>
+                              <div style= "background-color: rgb(230, 27, 27); color: white"; class="card-footer">
+                                <small style="color: white"> 5 dias <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <h5 class="card-title">Por o telemovel a carregar</h5>
+                                <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                              </div>
+                              <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                <small style="color: white"> 28 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                       
+                       </div>
+
+                       <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+                          <div class="card-header">
+                             <h3 style="font-size: 25px" class="card-title">
+                                Done
+                             </h3>
+                          </div>     
+                          <div class="card-collumn">
+                            <div class="scroll">
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                                  <h5 class="card-title">Dar os parabéns ao Joel</h5>
+                                  
+                                </div>
+                                <div style= "background-color: rgb(0, 192, 10)"; class="card-footer">
+                                  <small style="color: white">4 dias atrás <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Meter a carne a descongelar</h5>
+                                  <!--<p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>-->
+                                </div>
+                                <div style= "background-color: rgb(0, 192, 10)"; class="card-footer">
+                                  <small style="color: white">13 dias atrás  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Aspirar a casa</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                  <small style="color: white"> 19 dias atrás  <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Ligar aos avós</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                  <small style="color: white"> 1 dia atrás  <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                  <div style= "height: 100%"; class="card-body">
+                                    <h5 class="card-title">Pagar a renda</h5>
+                                    <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                  </div>
+                                  <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                    <small style="color: white"> 31 dias atrás <a style="color: white; float: right"; href="/projects/2">#2</a></small>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                  <div style= "height: 100%"; class="card-body">
+                                    <h5 class="card-title">Levar o cão a passear</h5>
+                                    <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                  </div>
+                                  <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                    <small style="color: white"> 11 dias atrás <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                  <div style= "height: 100%"; class="card-body">
+                                    <h5 class="card-title">Lavar a loiça</h5>
+                                    <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                  </div>
+                                  <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                    <small style="color: white"> 7 dias atrás  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>    
+                       </div>
+
+                       <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+                        <div class="card-header">
+                           <h3 style="font-size: 25px" class="card-title">
+                              All
+                           </h3>
+                        </div>
+                        <div class="card-collumn">
+                            <div class="scroll">
+                            <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                                <h5 class="card-title">Fazer Database</h5>
+                                
+                              </div>
+                              <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
+                                <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <h5 class="card-title">Connectar cliente e servidor</h5>
+                                <!--<p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>-->
+                              </div>
+                              <div style= "background-color: rgb(29, 129, 34)"; class="card-footer">
+                                <small style="color: white">28 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <h5 class="card-title">Verificar ligações</h5>
+                                <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                              </div>
+                              <div style= "background-color: rgb(192, 215, 59); color: white"; class="card-footer">
+                                <small style="color: white"> 13 dias  <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                              <div style= "height: 100%"; class="card-body">
+                                <h5 class="card-title">Criar tarefas</h5>
+                                <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                              </div>
+                              <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                <small style="color: white"> 45 dias  <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Navegar entre projetos</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(230, 27, 27); color: white"; class="card-footer">
+                                  <small style="color: white"> 1 dia &nbsp&nbsp&nbsp <a style="color: white; float: right"; href="/projects/2">#2</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Gerir user</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(192, 215, 59); color: white"; class="card-footer">
+                                  <small style="color: white"> 9 dias &nbsp&nbsp <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Criar conta</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(230, 27, 27); color: white"; class="card-footer">
+                                  <small style="color: white"> 4 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                                  <h5 class="card-title">Fazer projeto de AC1</h5>
+                                  
+                                </div>
+                                <div style= "background-color: rgb(29, 129, 34)"; class="card-footer">
+                                  <small style="color: white">29 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Estudar para POO</h5>
+                                  <!--<p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>-->
+                                </div>
+                                <div style= "background-color: rgb(192, 215, 59)"; class="card-footer">
+                                  <small style="color: white">10 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Adicionar bananas à lista de compras</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                  <small style="color: white"> 16 dias  <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <h5 class="card-title">Enviar email ao boss</h5>
+                                  <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                </div>
+                                <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                  <small style="color: white"> 27 dias  <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                </div>
+                              </div>
+                              <br>
+                              <div class="card">
+                                  <div style= "height: 100%"; class="card-body">
+                                    <h5 class="card-title">Fazer tabela Excel</h5>
+                                    <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                  </div>
+                                  <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                    <small style="color: white"> 32 dias <a style="color: white; float: right"; href="/projects/2">#2</a></small>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                  <div style= "height: 100%"; class="card-body">
+                                    <h5 class="card-title">Marcar jantar com a malta</h5>
+                                    <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                  </div>
+                                  <div style= "background-color: rgb(230, 27, 27); color: white"; class="card-footer">
+                                    <small style="color: white"> 5 dias <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                  <div style= "height: 100%"; class="card-body">
+                                    <h5 class="card-title">Por o telemovel a carregar</h5>
+                                    <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                  </div>
+                                  <div style= "background-color: rgb(29, 129, 34); color: white"; class="card-footer">
+                                    <small style="color: white"> 28 dias  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                  </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div style= "height: 100%"; class="card-body">
+                                      <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                                      <h5 class="card-title">Dar os parabéns ao Joel</h5>
+                                      
+                                    </div>
+                                    <div style= "background-color: rgb(0, 192, 10)"; class="card-footer">
+                                      <small style="color: white">4 dias atrás <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <div class="card">
+                                    <div style= "height: 100%"; class="card-body">
+                                      <h5 class="card-title">Meter a carne a descongelar</h5>
+                                      <!--<p class="card-text">AAAAAAAAAAAAAAAAAA FUNCIONA PAHHHHH, NUNCA MAIS DÁ...... .</p>-->
+                                    </div>
+                                    <div style= "background-color: rgb(0, 192, 10)"; class="card-footer">
+                                      <small style="color: white">13 dias atrás  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <div class="card">
+                                    <div style= "height: 100%"; class="card-body">
+                                      <h5 class="card-title">Aspirar a casa</h5>
+                                      <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                    </div>
+                                    <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                      <small style="color: white"> 19 dias atrás  <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <div class="card">
+                                    <div style= "height: 100%"; class="card-body">
+                                      <h5 class="card-title">Ligar aos avós</h5>
+                                      <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                    </div>
+                                    <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                      <small style="color: white"> 1 dia atrás  <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <div class="card">
+                                      <div style= "height: 100%"; class="card-body">
+                                        <h5 class="card-title">Pagar a renda</h5>
+                                        <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                      </div>
+                                      <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                        <small style="color: white"> 31 dias atrás <a style="color: white; float: right"; href="/projects/2">#2</a></small>
+                                      </div>
+                                    </div>
+                                    <br>
+                                    <div class="card">
+                                      <div style= "height: 100%"; class="card-body">
+                                        <h5 class="card-title">Levar o cão a passear</h5>
+                                        <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                      </div>
+                                      <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                        <small style="color: white"> 11 dias atrás <a style="color: white; float: right"; href="/projects/4">#4</a></small>
+                                      </div>
+                                    </div>
+                                    <br>
+                                    <div class="card">
+                                      <div style= "height: 100%"; class="card-body">
+                                        <h5 class="card-title">Lavar a loiça</h5>
+                                        <!--<p class="card-text">Isto vai ter de funcionar portanto não vale a pena chatear-me nem entrar em depressão profunda.</p>-->
+                                      </div>
+                                      <div style= "background-color: rgb(0, 192, 10); color: white"; class="card-footer">
+                                        <small style="color: white"> 7 dias atrás  <a style="color: white; float: right"; href="/projects/3">#3</a></small>
+                                      </div>
+                                    </div>
+                            </div>
+                     </div>
+                </section>
                     </section>
-            <!--<section class="content pb-3">
-                <div class="container-fluid h-100">
-                   <div class="card card-row card-secondary" style="width: 270px; float:left; height:200px; background:white; margin:10px">
-                      <div class="card-header">
-                         <h3 style="font-size: 25px" class="card-title">
-                            In Progress
-                         </h3>
-                      </div>
-                   </div>
-                </section>
-            <section class="content pb-3">
-                <div class="container-fluid h-100">
-                   <div class="card card-row card-secondary" style="width: 270px; float:left; height:200px; background:white; margin:10px">
-                      <div class="card-header">
-                         <h3 style="font-size: 25px" class="card-title">
-                            Done
-                         </h3>
-                      </div>
-                      
-                   </div>
-                </section>
-            -->
-         <!--<div class="card card-row card-primary">
-            <div class="card-header">
-               <h3 class="card-title">
-                  To Do
-               </h3>
-            </div>
-            <div class="card-body">
-               <div class="card card-primary card-outline">
-                  <div class="card-header">
-                     <h5 class="card-title">Create first milestone</h5>
-                     <div class="card-tools">
-                        <a href="#" class="btn btn-tool btn-link">#5</a>
-                        <a href="#" class="btn btn-tool">
-                        <i class="fas fa-pen"></i>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="card card-row card-default">
-            <div class="card-header bg-info">
-               <h3 class="card-title">
-                  In Progress
-               </h3>
-            </div>
-            <div class="card-body">
-               <div class="card card-light card-outline">
-                  <div class="card-header">
-                     <h5 class="card-title">Update Readme</h5>
-                     <div class="card-tools">
-                        <a href="#" class="btn btn-tool btn-link">#2</a>
-                        <a href="#" class="btn btn-tool">
-                        <i class="fas fa-pen"></i>
-                        </a>
-                     </div>
-                  </div>
-                  <div class="card-body">
-                     <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                        Aenean commodo ligula eget dolor. Aenean massa.
-                        Cum sociis natoque penatibus et magnis dis parturient montes,
-                        nascetur ridiculus mus.
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="card card-row card-success">
-            <div class="card-header">
-               <h3 class="card-title">
-                  Done
-               </h3>
-            </div>
-            <div class="card-body">
-               <div class="card card-primary card-outline">
-                  <div class="card-header">
-                     <h5 class="card-title">Create repo</h5>
-                     <div class="card-tools">
-                        <a href="#" class="btn btn-tool btn-link">#1</a>
-                        <a href="#" class="btn btn-tool">
-                        <i class="fas fa-pen"></i>
-                        </a>
-                     </div>
-                  </div>
-               </div>
-            --></div>
-         </div>
-      </div>
+                </div>
+                
+        </section>
+        <div align="right" id="piechart"></div>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        
+        // Draw the chart and set the chart values
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+          ['Task', 'Task Status'],
+          ['To do', 7],
+          ['In Progress', 7],
+          ['Done', 7],
+        ]);
+        
+          // Optional; add a title and set the width and height of the chart
+          var options = {'title':'Task Status Distribution ', 'width':1045, 'height':730, backgroundColor: 'transparent', is3D: true, colors: ['red', 'orange', 'green']};
+        
+          // Display the chart inside the <div> element with id="piechart"
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          chart.draw(data, options);
+        }
+        </script>    
+            
+    </div>
+</div>      
+        </div>
    </section>
 </div>
 {% endblock content %}
