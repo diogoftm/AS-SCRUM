@@ -1,9 +1,157 @@
 {% extends "scrum/base.html" %}
-
 {% block content %}
-    {% for task in tasks %}
-        <p>
-            {{task}}
-        </p>
-    {% endfor %}
+<section class="content pb-3">
+      <div class="container-fluid h-100">
+         <div style="height: 640px"; class="card card-row card-secondary">
+            <div class="card-header">
+               <h3 style="font-size: 30px"; class="card-title">
+                  Sprint {{n}}
+               </h3>
+            </div>
+
+
+            <section class="content pb-3 align-center">
+                <div class="container-fluid h-100">
+    <div class=" card card-row card-secondary" style="width: 270px; float:left; margin:10px; ">
+         <div class="card-header">
+             <h3 style="font-size: 25px" class="card-title">
+                To do
+             </h3>
+         </div>
+        <div class="card-collumn col-sm mx-auto">
+        {% for task in tasks %}
+            {% if task.state == 1%}
+                {% if task.points == 1 %}
+
+                        <div class="scroll" style="padding-top:10px;">
+                            <div class="border-success card">
+                              <div style= "height: 100%"; class="card-body">
+
+                                <h5 class="card-title">{{task.title}}</h5>
+
+                              </div>
+                              <div class="card-footer">
+                                <small style="color: white">As a {{task.as_a}}. I want {{task.i_want}}. So that {{task.so_that}}</small>
+                              </div>
+                            </div>
+                            <br>
+                        </div>
+
+                {% endif %}
+                {% if task.points == 2 %}
+
+                        <div class="scroll" style="padding-top:10px;">
+                            <div class="border-primary card">
+                              <div style= "height: 100%" class="card-body">
+
+                                <h5 class="card-title">{{task.title}}</h5>
+
+                              </div>
+                              <div class="card-footer">
+                                <small>As a {{task.as_a}}. I want {{task.i_want}}. So that {{task.so_that}}</small>
+                              </div>
+                            </div>
+                            <br>
+                        </div>
+
+                {% endif %}
+                {% if task.points == 4 %}
+                        <div class="scroll" style="padding-top:10px;">
+                            <div class="border-warning card">
+                              <div style= "height: 100%"; class="card-body">
+
+                                <h5 class="card-title">{{task.title}}</h5>
+
+                              </div>
+                              <div class="card-footer">
+                                <small>As a {{task.as_a}}. I want {{task.i_want}}. So that {{task.so_that}}</small>
+                              </div>
+                            </div>
+                            <br>
+                        </div>
+                {% endif %}
+                {% if task.points == 8 %}
+
+                        <div class="scroll" style="padding-top:10px;">
+                            <div class="border-danger card" >
+                              <div style= "height: 100%"; class="card-body">
+
+                                <h5 class="card-title">{{task.title}}</h5>
+
+                              </div>
+                              <div class="card-footer">
+                                <small>As a {{task.as_a}}. I want {{task.i_want}}. So that {{task.so_that}}</small>
+                              </div>
+                            </div>
+                            <br>
+                        </div>
+
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class=" card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+         <div class="card-header">
+             <h3 style="font-size: 25px" class="card-title">
+                In progress
+             </h3>
+         </div>
+        <div class="card-collumn col-sm" mx-auto>
+        {% for task in tasks %}
+            {% if task.state == 2%}
+
+                    <div class="scroll" style="padding-top:10px;">
+                        <div class="card">
+                          <div style= "height: 100%"; class="card-body">
+
+                            <h5 class="card-title">{{task.title}}</h5>
+
+                          </div>
+                          <div class="card-footer">
+                            <small>As a {{task.as_a}}. I want {{task.i_want}}. So that {{task.so_that}}</small>
+                          </div>
+                        </div>
+                        <br>
+                    </div>
+
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+
+    <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+         <div class="card-header">
+             <h3 style="font-size: 25px" class="card-title">
+                Finished
+             </h3>
+         </div>
+        <div class="card-collumn col-sm" mx-auto>
+        {% for task in tasks %}
+            {% if task.state == 3 or task.state == 4 %}
+
+                    <div class="scroll" style="padding-top:10px;">
+                        <div class="card">
+                          <div style= "height: 100%"; class="card-body">
+
+                            <h5 class="card-title">{{task.title}}</h5>
+
+                          </div>
+                          <div style= "background-color: rgb(230, 27, 27)" class="card-footer">
+                            <small style="color: white">As a {{task.as_a}}. I want {{task.i_want}}. So that {{task.so_that}}</small>
+                          </div>
+                        </div>
+                        <br>
+                    </div>
+
+            {% endif %}
+        {% endfor %}
+    </div>
+    </div>
+                </div>
+            </section>
+         </div>
+      </div>
+</section>
 {% endblock content %}

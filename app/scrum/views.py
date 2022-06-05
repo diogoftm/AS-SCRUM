@@ -101,9 +101,9 @@ def create_sprint(request, project_id=None):
 
 @login_required
 def sprint(request, project_id=None, sprint_number=None):
-    tasks = Project.objects.filter(id=project_id).first().sprints.get().tasks.values()
+    tasks = Project.objects.filter(id=project_id).first().sprints.filter(number=sprint_number).first().tasks.values()
     user_prof = UserProfile.objects.filter(user=request.user).first()
-    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks, 'projects': user_prof.projects.all().values()})
+    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks, 'projects': user_prof.projects.all().values(), 'n': sprint_number})
 
 
 @login_required
