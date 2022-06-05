@@ -1,7 +1,7 @@
 {% extends "scrum/base.html" %}
 {% block content %}
 {% load static %}
-<!--
+
    <div class="content-section">
        <h1>Personal Dashboard</h1>
    </div>
@@ -12,7 +12,7 @@
    {% for task in tasks %}
        <p>{{ task.title }}</p>
    {% endfor %}
-   -->
+
 <link rel="stylesheet" type="text/css" href="{% static 'users/static/css/all.min.css'  %}">
 <!-- Ekko Lightbox -->
 <link rel="stylesheet" type="text/css" href="{% static 'users/static/css/ekko-lightbox.css' %}">
@@ -39,7 +39,74 @@
             overflow-y: auto;
             text-align:justify;
         }
+
+        
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column1 {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row1 {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column1 {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card1 {
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #14A4BC;
+  border-radius: 25px;
+  background-position: left top;
+  background-repeat: repeat;
+}
+.card2 {
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #2CA444;
+  border-radius: 25px;
+  background-position: left top;
+  background-repeat: repeat;
+}
+.card3 {
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #DC3444;
+  border-radius: 25px;
+  background-position: left top;
+  background-repeat: repeat;
+}
 </style>
+
+
+
 
 
 <div class="content-wrapper kanban" style="min-height: 646px;">
@@ -568,10 +635,37 @@
           chart.draw(data, options);
         }
         </script>    
+          
+          <div class="row1">
+            <div class="column1">
+              <div class="card1">
+                <h1 style="color:white; size: 50px; text-align: left;"><b>6</b></h1>
+                <p style="color:white; font-size: 20px; text-align: left;"> <b>Projetos</b></p>
+                <img src= "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Noun_Project_projects_icon_1327109_cc.svg/1024px-Noun_Project_projects_icon_1327109_cc.svg.png""; width="70" height="70">
+              </div>
+            </div>
+          
+            <div class="column1">
+              <div class="card2">
+                <h1 style="color:white; size: 50px; text-align: left;"><b>17</b></h1>
+                <p style="color:white; font-size: 20px; text-align: left;"> <b>Tarefas</b></p>
+                <img src= "https://cdn-icons-png.flaticon.com/512/1582/1582717.png"; width="70" height="70">
+              </div>
+            </div>
             
+            <div class="column1">
+              <div class="card3">
+                <h1 style="color:white; size: 50px; text-align: left;"><b>42</b></h1>
+                <p style="color:white; font-size: 20px; text-align: left;"> <b>Pontos</b></p>
+                <img src= "https://cdn-icons-png.flaticon.com/512/2558/2558459.png"; width="70" height="70">
+              </div>
+            </div>
+          </div>
+                  
     </div>
 </div>      
         </div>
-   </section>
+      </section>
+
 </div>
 {% endblock content %}
