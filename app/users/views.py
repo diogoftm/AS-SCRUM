@@ -33,19 +33,23 @@ def logout(request, **kwargs):
 def personal_dashboard(request):
     user_prof = UserProfile.objects.filter(user=request.user).first()
     tasks = []
+    points=0
     projs = user_prof.projects.all()
     if projs.count() == 0:
         return render(request, 'users/personal_dashboard.html', {'title': f"{request.user.username}'s dashboard",
-                                                             'projects': tasks}) #, 'tasks': tasks
+                                                             'projects': tasks, 'n_tasks': 0,
+                                                                 'n_projects': 0, 'n_points': 0}) #, 'tasks': tasks
 
     for proj in projs :
         for task in proj.tasks.all():
             for user in task.assigned_for.all():
                 if user == request.user:
                     tasks.append(task)
+                    points = points + task.points
 
     return render(request, 'users/personal_dashboard.html', {'title': f"{user_prof.projects.first().title}'s dashboard",
                                                              'projects': user_prof.projects.all().values(),
-                                                             'tasks': tasks}) 
+                                                             'tasks': tasks, 'n_tasks': tasks.__len__(),
+                                                             'n_projects': projs.count(), 'n_points': points})
 
 
