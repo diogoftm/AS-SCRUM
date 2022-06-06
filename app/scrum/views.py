@@ -77,7 +77,7 @@ def product_backlog(request, project_id=None):
     proj = Project.objects.filter(id=project_id).first()
     user_prof = UserProfile.objects.filter(user=request.user).first()
     return render(request, 'scrum/product_backlog.html', {'title': f"Product Backlog", 'projects': user_prof.projects.all().values(), 'tasks': proj.tasks.values(),
-                                                          'sprints': proj.sprints.values()})
+                                                          'sprints': proj.sprints.values(),'project': proj})
 
 
 @login_required
