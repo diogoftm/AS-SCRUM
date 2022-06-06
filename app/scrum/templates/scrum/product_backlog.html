@@ -1,4 +1,171 @@
-{% extends "scrum/base2.html" %}
+{% extends "scrum/base.html" %}
+{% block content %}
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/all.min.css'  %}">
+<!-- Ekko Lightbox -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/ekko-lightbox.css' %}">
+<!-- Theme style -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/adminlte.min.css' %}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" type="text/css" href="{% static 'users/static/css/OverlayScrollbars.min.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback%22%3E">
+
+<style>
+    h1 {
+        color:white;
+    }
+
+    h5.card-title {
+        text-align: left;
+    }
+    div.scroll {
+
+            background-color: white;
+            width: 270px;
+            height: 500px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align:justify;
+        }
+
+        
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column1 {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row1 {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column1 {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card1 {
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #14A4BC;
+  border-radius: 25px;
+  background-position: left top;
+  background-repeat: repeat;
+}
+.card2 {
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #2CA444;
+  border-radius: 25px;
+  background-position: left top;
+  background-repeat: repeat;
+}
+.card3 {
+  box-shadow: 0 5px 9px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #DC3444;
+  border-radius: 25px;
+  background-position: left top;
+  background-repeat: repeat;
+}
+</style>
+
+
+
+
+
+<div class="content-wrapper kanban" style="min-height: 646px;">
+   <section class="content-header">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-6">
+               <h2>Product Backlog</h2>
+            </div>
+            <div class="col-sm-6 d-none d-sm-block">
+               <ol class="breadcrumb float-sm-right">
+               </ol>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="content pb-3">
+      <div class="container-fluid h-100">
+         <div style="height: 640px"; class="card card-row card-secondary">
+            <div class="card-header">
+               <h3 style="font-size: 30px"; class="card-title">
+                  Lista de Tarefas
+               </h3>
+            </div>
+
+                <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
+                    <div class="card-header">
+                       <h3 style="font-size: 25px" class="card-title">
+                          Tarefas
+                       </h3>
+                    </div>
+                    <div class="card-collumn">
+                        <div class="scroll">
+                          {% for task in tasks %}
+                          
+                              <div class="card">
+                                <div style= "height: 100%"; class="card-body">
+                                  <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                                  <h5 class="card-title">{{task.title}}</h5>
+                                  
+                                </div>
+                            {% if task.points == 1 %}
+                            <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
+                              <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                            </div>
+                            
+                            {% elif task.points == 2 %}
+                            <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
+                              <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                            </div>
+                            {% elif task.points == 4 %}
+                            <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
+                              <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                            </div>
+                            {% elif task.points == 8 %}
+                            <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
+                              <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                            </div>
+                            {% endif %}
+                              </div>
+                              <br>
+                          
+                        {% endfor %}
+                        </div>
+                 </div>
+            </div>
+
+                    
+{% endblock content %}
 
 {% block content %}
     {% for task in tasks %}
@@ -6,7 +173,7 @@
             {{task.title}}
             <form action="add_task_sprint" method="post">
                 {% csrf_token %}
-                <select name="task_id" style="display=none">
+                <select name="task_id" style="display: none">
                     <option value="{{task.id}}"></option>
                 </select>
                 <select name="sprint_number">
