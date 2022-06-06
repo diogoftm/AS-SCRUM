@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group
 from django.contrib import messages
 from django.shortcuts import render
 from users.models import UserProfile
-
+from users import views as user_views
 from django.contrib.auth.models import User
 from .models import Task,Project,Sprint
 from .forms import *
@@ -12,8 +12,7 @@ from django.http import HttpResponseRedirect
 
 def home(request):
     if request.user.is_authenticated:
-        user_prof = UserProfile.objects.filter(user=request.user).first()
-        return render(request, 'users/personal_dashboard.html', {'title': 'Home', 'projects': user_prof.projects.all().values()})
+        return user_views.personal_dashboard(request)
 
     return render(request,'scrum/index.html', {'title': 'Home'})
 
@@ -61,10 +60,11 @@ def new_project(request):
                                        created_by=request.user, sprint_duration=data.get('sprint_duration'), state=1,
                                        password=data.get('password'), group_id=1)
             group = Group.objects.get_or_create(name=f'Project {proj.id}')
-            group.user_set.add(request.user)
+            group[0].user_set.add(request.user)
             proj.group_id = group[0].id
             proj.save()
             UserProfile.objects.filter(user=request.user).first().projects.add(proj)
+            messages.success(request, f'Project with id= {proj.id} was created!')
             return HttpResponseRedirect(f'/projects/{proj.id}')
     else:
         user_prof = UserProfile.objects.filter(user=request.user).first()

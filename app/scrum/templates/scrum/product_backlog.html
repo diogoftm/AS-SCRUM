@@ -97,7 +97,7 @@ background-repeat: repeat;
         </div>
 
          
-          <a class="nav-link" href="/projects/{{project.id}}/add_task"><span class="fs-3px-2"> Join Project</span></a>
+          <a href="/projects/{{project.id}}/add_task">Create task</a>
         
 
           <div class="card-group" style = "overflow-x: scroll;
@@ -398,6 +398,25 @@ overflow-y: hidden;">
         {% endfor %}
 </div>
     </div>
+      {% for task in tasks %}
+        <p>
+            {{task.title}}
+            <form action="add_task_sprint" method="post">
+                {% csrf_token %}
+                <select name="task_id" style="display=none">
+                    <option value="{{task.id}}"></option>
+                </select>
+                <select name="sprint_number">
+                    {% for sprint in sprints %}
+                    <option value="{{sprint.number}}">{{sprint.number}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-outline-primary">Add to sprint</button>
+            </form>
+
+            <a href="create_sprint">create sprint</a>
+        </p>
+    {% endfor %}
   </div>
 </section>
 
