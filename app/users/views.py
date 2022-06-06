@@ -45,6 +45,7 @@ def personal_dashboard(request):
                     tasks.append(task)
 
     return render(request, 'users/personal_dashboard.html', {'title': f"{user_prof.projects.first().title}'s dashboard",
-                                                             'projects': user_prof.projects.all().values()}) #, 'tasks': tasks
+                                                             'projects': user_prof.projects.all().values(),
+                                                             'tasks': tasks}) 
 
 
