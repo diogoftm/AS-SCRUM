@@ -174,7 +174,6 @@ body {
                           </div>
                     <div class="card-collumn">
                         <div class="scroll">
-
                   {% for task in tasks %}
                     {% if task.state == 2%}
                         <div class="card">
@@ -185,20 +184,20 @@ body {
                           </div>
                       {% if task.points == 1 %}
                       <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       
                       {% elif task.points == 2 %}
                       <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% elif task.points == 4 %}
                       <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% elif task.points == 8 %}
                       <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% endif %}
                         </div>
@@ -228,20 +227,20 @@ body {
                           </div>
                       {% if task.points == 1 %}
                       <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       
                       {% elif task.points == 2 %}
                       <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% elif task.points == 4 %}
                       <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% elif task.points == 8 %}
                       <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% endif %}
                         </div>
@@ -270,20 +269,20 @@ body {
                                     </div>
                                 {% if task.points == 1 %}
                                 <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                                 </div>
                                 
                                 {% elif task.points == 2 %}
                                 <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                                 </div>
                                 {% elif task.points == 4 %}
                                 <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                                 </div>
                                 {% elif task.points == 8 %}
                                 <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
+                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                                 </div>
                                 {% endif %}
                                   </div>
@@ -297,7 +296,7 @@ body {
                 </div>
                 
         </section>
-        <div id="piechart"></div>
+        <div id="piechart" style="margin:auto; width: 65%"></div>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         
