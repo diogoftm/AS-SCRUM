@@ -47,9 +47,24 @@ def personal_dashboard(request):
                     tasks.append(task)
                     points = points + task.points
 
+    dict={
+        "Todo":0,
+        "Inprogress":0,
+        "Done":0
+    }
+    for task in tasks:
+        if task.state == 1:
+          dict['Todo'] += 1
+        elif task.state == 2:
+            dict['Inprogress'] += 1
+        elif task.state == 3 or task.state == 4:
+            dict['Done'] += 1
+        
+
     return render(request, 'users/personal_dashboard.html', {'title': f"{user_prof.projects.first().title}'s dashboard",
                                                              'projects': user_prof.projects.all().values(),
                                                              'tasks': tasks, 'n_tasks': tasks.__len__(),
-                                                             'n_projects': projs.count(), 'n_points': points})
+                                                             'n_projects': projs.count(), 'n_points': points,
+                                                             'graf': dict})
 
 
