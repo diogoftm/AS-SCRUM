@@ -16,16 +16,12 @@ class Task(models.Model):
 
     TODO = 1
     IN_PROGRESS = 2
-    IN_REVIEW = 3
-    FINISHED = 4
-    CANCELED = 5
+    FINISHED = 3
 
     STATE_CHOICES = (
         (TODO, 'To Do'),
         (IN_PROGRESS, 'In Progress'),
-        (IN_REVIEW, 'In Review'),
         (FINISHED, 'Finished'),
-        (CANCELED, 'Canceled'),
     )
     state = models.PositiveSmallIntegerField(choices=STATE_CHOICES, blank=True, null=True)
 

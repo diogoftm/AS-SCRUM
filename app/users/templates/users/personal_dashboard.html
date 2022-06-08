@@ -137,27 +137,33 @@ body {
                   {% for task in tasks %}
                     {% if task.state == 1%}
                         <div class="card">
-                          <div style= "height: 100%"; class="card-body">
-                            <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                          <div style= "height: 100%; padding-top:10px;" class="card-body">
                             <h5 class="card-title">{{task.title}}</h5>
-                            
+                            <form action="projects/change_task_state" method="post">
+                                {% csrf_token %}
+                                <select hidden name="task_id" >
+                                    <option value="{{task.id}}"></option>
+                                </select>
+                                <label>State</label>
+                                <select name="state" onchange="this.form.submit()">
+                                    <option value="1">To do</option>
+                                    <option value="2">In progress</option>
+                                    <option value="3">Done</option>
+                                </select>
+                            </form>
                           </div>
                       {% if task.points == 1 %}
                       <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
                       </div>
                       
                       {% elif task.points == 2 %}
                       <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
                       </div>
                       {% elif task.points == 4 %}
                       <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
                       </div>
                       {% elif task.points == 8 %}
                       <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#5</a></small>
                       </div>
                       {% endif %}
                         </div>
@@ -169,7 +175,7 @@ body {
                 </div>
                        <div class="card card-row card-secondary" style="width: 270px; float:left; background:white; margin:10px">
                           <div class="card-header">
-                             <h3 style="font-size: 25px" class="card-title">
+                             <h3 style="font-size: 25px;" class="card-title">
                                 In Progress
                              </h3>
                           </div>
@@ -178,27 +184,33 @@ body {
                   {% for task in tasks %}
                     {% if task.state == 2%}
                         <div class="card">
-                          <div style= "height: 100%"; class="card-body">
-                            <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                          <div style= "height: 100%; padding-top:10px;" class="card-body">
                             <h5 class="card-title">{{task.title}}</h5>
-                            
+                            <form action="projects/change_task_state" method="post">
+                                {% csrf_token %}
+                                <select hidden name="task_id" >
+                                    <option value="{{task.id}}"></option>
+                                </select>
+                                <label>State</label>
+                                <select name="state" onchange="this.form.submit()">
+                                    <option value="1">To do</option>
+                                    <option value="2">In progress</option>
+                                    <option value="3">Done</option>
+                                </select>
+                            </form>
                           </div>
                       {% if task.points == 1 %}
                       <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       
                       {% elif task.points == 2 %}
                       <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% elif task.points == 4 %}
                       <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% elif task.points == 8 %}
                       <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                       </div>
                       {% endif %}
                         </div>
@@ -221,27 +233,37 @@ body {
                   {% for task in tasks %}
                     {% if task.state == 3 or task.state == 4%}
                         <div class="card">
-                          <div style= "height: 100%"; class="card-body">
-                            <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
+                          <div style= "height: 100%; padding-top:10px;" class="card-body">
                             <h5 class="card-title">{{task.title}}</h5>
-                            
+                            <form action="projects/change_task_state" method="post">
+                                {% csrf_token %}
+                                <select hidden name="task_id" >
+                                    <option value="{{task.id}}"></option>
+                                </select>
+                                <label>State</label>
+                                <select name="state" onchange="this.form.submit()">
+                                    <option value="1">To do</option>
+                                    <option value="2">In progress</option>
+                                    <option value="3">Done</option>
+                                </select>
+                            </form>
                           </div>
                       {% if task.points == 1 %}
                       <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
+
                       </div>
                       
                       {% elif task.points == 2 %}
                       <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
+
                       </div>
                       {% elif task.points == 4 %}
                       <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
+
                       </div>
                       {% elif task.points == 8 %}
                       <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                        <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
+
                       </div>
                       {% endif %}
                         </div>
@@ -261,29 +283,37 @@ body {
                         <div class="card-collumn">
                             <div class="scroll">
                               {% for task in tasks %}
-                              {% if task.state == 1 or task.state == 2 or task.state == 3 or task.state == 4%}
+                              {% if task.state == 1 or task.state == 2 or task.state == 3%}
                                   <div class="card">
-                                    <div style= "height: 100%"; class="card-body">
-                                      <!--<p class="card-text">Isto nunca mais funciona em modo e estou-me a passar.</p>-->
-                                      <h5 class="card-title">{{task.title}}</h5>
-                                      
-                                    </div>
+                          <div style= "height: 100%; padding-top:10px;" class="card-body">
+                            <h5 class="card-title">{{task.title}}</h5>
+                            <form action="projects/change_task_state" method="post">
+                                {% csrf_token %}
+                                <select hidden name="task_id" >
+                                    <option value="{{task.id}}"></option>
+                                </select>
+                                <label>State</label>
+                                <select name="state" onchange="this.form.submit()">
+                                    <option value="1">To do</option>
+                                    <option value="2">In progress</option>
+                                    <option value="3">Done</option>
+                                </select>
+                            </form>
+                          </div>
                                 {% if task.points == 1 %}
                                 <div style= "background-color: rgb(10, 124, 4)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
+
                                 </div>
                                 
                                 {% elif task.points == 2 %}
                                 <div style= "background-color: rgb(230, 206, 27)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                                 </div>
                                 {% elif task.points == 4 %}
                                 <div style= "background-color: rgb(230, 139, 27)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
+
                                 </div>
                                 {% elif task.points == 8 %}
                                 <div style= "background-color: rgb(230, 27, 27)"; class="card-footer">
-                                  <small style="color: white">3 dias <a style="color: white; float: right"; href="/projects/5">#{{project.id}}</a></small>
                                 </div>
                                 {% endif %}
                                   </div>
@@ -359,11 +389,5 @@ body {
               </div>
             </div>
           </div>
-                  
-    </div>
-</div>      
-        </div>
-      </section>
 
-</div>
 {% endblock content %}

@@ -31,6 +31,7 @@ urlpatterns = [
     path('new_project', scrum_views.new_project, name='new-project'),
     path('projects/<int:project_id>/product_backlog', scrum_views.product_backlog, name='product-backlog'),
     path('projects/<int:project_id>/add_task_sprint', scrum_views.add_task_sprint, name='add-task-sprint'),
+    path('projects/change_task_state', scrum_views.change_task_state, name='change-task-state'),
     path('projects/<int:project_id>/create_sprint', scrum_views.create_sprint, name='create-sprint'),
     path('projects/<int:project_id>/sprint<int:sprint_number>', scrum_views.sprint, name='sprint'),
     path('join_project/', scrum_views.join_project, name='join-project'),

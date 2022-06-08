@@ -136,3 +136,12 @@ def join_project(request):
         form = JoinProjectForm()
         return render(request, 'scrum/creation_form.html',
                       {'title': f"join a project", 'form': form, 'projects': user_prof.projects.all().values()})
+
+
+@login_required
+def change_task_state(request):
+    task = Task.objects.filter(id=request.POST.get("task_id")).first()
+    task.state = request.POST.get("state")
+    task.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
