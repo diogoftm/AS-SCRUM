@@ -101,44 +101,83 @@
     </div>
   </div>
 </main>-->
-<p><span style="font-size: 3em;">{{project.title}}</span><span>
-  estado:
-  {% if project.state == 1 %}
-     in progress
-  {% elif project.state == 2 %}
-    finished
-  {% endif %}
-</span></p>
-<p><h5>{{project.description}}</h5>
-</p>
-<p>duracao sprint: {{project.sprint_duration}}</p>
-
-<p><h5>sprints</h5></p>
-<table >
-<tr>
-{% for sprint in sprints %}
-<td style="padding-right: 3em;"><p>sprint #{{sprint.number}}</p>
-<p>estado:
-  {% if sprint.state == 1 %}
-   to start
-  {% elif sprint.state == 2 %}
-  in progress
-  {% elif sprint.state == 3 %}
-  finished
-  {% endif %}
-</p></td>
-{% endfor %}
-</tr>
-</table>
-<a href="{% url 'create-sprint' project.id %}">create sprint</a>
-
-<br>
-<p><h2>Equipa</h2></p>
-<table>
-  <tr>
-  {% for member in team %}
-<td style="padding-right: 1.5em;">{{member.username}}</td> 
-{% endfor %}
-</tr>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col fs-2">
+      {{project.title}}
+    </div>
+    <div class="col">
+      <div class="d-inline text-wrap {% if project.state == 1 %} bg-success
+        {% elif project.state == 2 %} bg-danger {% endif %} float-end badge" style="margin-top: 1em;">
+        {%if project.state == 1 %}
+          in progress
+        {%elif project.state == 2 %}
+          finished
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="border-start border-primary border-3 rounded-start rounded-3">
+        <div class="border border-start-0 border-1 rounded-end rounded-1">
+          <div class="text-start text-break" style="margin-left:0.5em;">
+            {{project.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col fs-3">
+      Sprints
+    </div>
+  </div>
+  <div class="row ">
+    {% for sprint in sprints %}
+    <div class="col-md-2">
+      <a href="{% url 'sprint' project.id sprint.number %}" class="text-decoration-none text-dark">
+        <div class="card mt-3">
+          <div class="card-header">
+            sprint #{{sprint.number}}
+          </div>
+          <div class="card-footer badge fs-6 text-middle 
+            {% if sprint.state == 1 %}
+              bg-success
+            {% elif sprint.state == 2 %}
+              bg-warning
+            {% elif sprint.state == 3 %}
+              bg-danger
+            {% endif %}">
+            {% if sprint.state == 1 %}
+               to start
+            {% elif sprint.state == 2 %}
+              in progress
+            {% elif sprint.state == 3 %}
+              finished
+            {% endif %}
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col mt-3">
+      <button class="btn btn-primary"><a class="text-light text-decoration-none" href="{% url 'create-sprint' project.id %}">create sprint</a></button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col fs-3">
+      Equipa
+    </div>
+  </div>
+  <div class="row ">
+    {% for member in team %}
+    <div class="col-sm-1 fs-5">
+      {{member.username}}
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock content %}
