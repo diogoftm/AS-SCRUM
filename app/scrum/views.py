@@ -102,9 +102,10 @@ def create_sprint(request, project_id=None):
 
 @login_required
 def sprint(request, project_id=None, sprint_number=None):
-    tasks = Project.objects.filter(id=project_id).first().sprints.filter(number=sprint_number).first().tasks.values()
+    proj = Project.objects.filter(id=project_id)
+    tasks = proj.first().sprints.filter(number=sprint_number).first().tasks.values()
     user_prof = UserProfile.objects.filter(user=request.user).first()
-    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks, 'projects': user_prof.projects.all().values(), 'n': sprint_number})
+    return render(request, 'scrum/sprint.html', {'title': f"Product Backlog", 'tasks': tasks, 'project': proj.values()[0], 'projects': user_prof.projects.all().values(), 'n': sprint_number})
 
 
 @login_required
@@ -112,9 +113,11 @@ def join_project(request):
     if request.method == 'POST':
         form = JoinProjectForm(request.POST)
         if form.is_valid():
-            print("AQUI")
             data = form.cleaned_data
             proj = Project.objects.filter(id=data.get("id")).first()
+            if proj == None:
+                messages.success(request, f'Incorrect password or wrong project id!')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             if data.get("password") == proj.password:
                 print("password correta")
                 user_prof = UserProfile.objects.filter(user=request.user).first()
