@@ -28,7 +28,7 @@ class TaskForm(forms.Form):
 
 class ProjectForm(forms.Form):
     title = forms.CharField(label='Title', max_length=20)
-    sprint_duration = forms.IntegerField(min_value=1, max_value=10)
+    sprint_duration = forms.IntegerField(min_value=1, label="Sprint duration (weeks)")
     description = forms.CharField(widget=forms.Textarea(attrs={'name': 'description', 'rows': '3', 'cols': '5'}))
     password = forms.CharField(widget=forms.PasswordInput())
 
