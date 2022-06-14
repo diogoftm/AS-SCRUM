@@ -76,8 +76,17 @@ def new_project(request):
 def product_backlog(request, project_id=None):
     proj = Project.objects.filter(id=project_id).first()
     user_prof = UserProfile.objects.filter(user=request.user).first()
-    return render(request, 'scrum/product_backlog.html', {'title': f"Product Backlog", 'projects': user_prof.projects.all().values(), 'tasks': proj.tasks.values(),
-                                                          'sprints': proj.sprints.values(),'project': proj})
+    tasks = proj.tasks.values()
+    t = proj.tasks
+    for task in tasks:
+        for sprint in proj.sprints.all():
+            if sprint.tasks.filter(id=task['id']).first() != None:
+                task['in_sprint'] = sprint.number
+                break
+            else:
+                task['in_sprint'] = 0
+    return render(request, 'scrum/product_backlog.html', {'title': f"Product Backlog", 'projects': user_prof.projects.all().values(), 'tasks': tasks,
+                                                         'sprints': proj.sprints.values(),'project': proj})
 
 
 @login_required
