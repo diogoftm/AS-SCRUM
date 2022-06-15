@@ -61,7 +61,7 @@ def personal_dashboard(request):
             dict['Done'] += 1
         
 
-    return render(request, 'users/personal_dashboard.html', {'title': f"{user_prof.projects.first().title}'s dashboard",
+    return render(request, 'users/personal_dashboard.html', {'title': f"{request.user.username}'s dashboard",
                                                              'projects': user_prof.projects.all().values(),
                                                              'tasks': tasks, 'n_tasks': tasks.__len__(),
                                                              'n_projects': projs.count(), 'n_points': points,
