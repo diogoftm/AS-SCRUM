@@ -64,7 +64,7 @@ def new_project(request):
             proj.group_id = group[0].id
             proj.save()
             UserProfile.objects.filter(user=request.user).first().projects.add(proj)
-            messages.success(request, f'Project with id= {proj.id} was created!')
+            messages.success(request, f'Project with id= {proj.id} was created! Share the project id with your team.')
             return HttpResponseRedirect(f'/projects/{proj.id}')
     else:
         user_prof = UserProfile.objects.filter(user=request.user).first()
@@ -125,7 +125,7 @@ def join_project(request):
             data = form.cleaned_data
             proj = Project.objects.filter(id=data.get("id")).first()
             if proj == None:
-                messages.success(request, f'Incorrect password or wrong project id!')
+                messages.warning(request, f'Incorrect password or wrong project id!')
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
             if data.get("password") == proj.password:
                 print("password correta")
@@ -136,7 +136,7 @@ def join_project(request):
                 messages.success(request, f'Success!')
                 return project(request, data.get("id"))
             else:
-                messages.success(request, f'Incorrect password or wrong project id!')
+                messages.warning(request, f'Incorrect password or wrong project id!')
                 return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         else:
             user_prof = UserProfile.objects.filter(user=request.user).first()
