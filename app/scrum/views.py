@@ -77,7 +77,6 @@ def product_backlog(request, project_id=None):
     proj = Project.objects.filter(id=project_id).first()
     user_prof = UserProfile.objects.filter(user=request.user).first()
     tasks = proj.tasks.values()
-    t = proj.tasks
     for task in tasks:
         for sprint in proj.sprints.all():
             if sprint.tasks.filter(id=task['id']).first() != None:
