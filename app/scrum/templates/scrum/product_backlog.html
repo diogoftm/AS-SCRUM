@@ -13,6 +13,24 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback%22%3E">
 
 <style>
+    h1 {
+        color:white;
+    }
+
+    h5.card-title {
+        text-align: left;
+    }
+    div.scroll {
+
+            background-color: white;
+            width: 270px;
+            height: 500px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align:justify;
+        }
+
+
   h1 {
       color:white;
   }
@@ -63,7 +81,7 @@ clear: both;
 
 <section class="content pb-3">
   <div class="container-fluid h-100">
-     <div style="height: 640px" class="card card-row card-secondary">
+     <div class="card card-row card-secondary">
         <div class="card-header">
            <h3 style="font-size: 30px" class="card-title">
               Product Backlog {{n}}
@@ -79,7 +97,6 @@ clear: both;
                 <th>Description</th>
                 <th>Sprint</th>
               </tr>
-
           {% for task in tasks %}
 
             {% if task.priority == 4%}
@@ -311,9 +328,9 @@ clear: both;
 
 
                 </td>
-              </tr>
-              
+              </tr>   
             </table>
+          </div>
                 </div>
      </div>
   </div>
