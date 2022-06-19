@@ -78,7 +78,9 @@ def product_backlog(request, project_id=None):
     user_prof = UserProfile.objects.filter(user=request.user).first()
     tasks = proj.tasks.values()
     for task in tasks:
+        task['state_str'] = Task.STATE_CHOICES[task['state']-1][1]
         for sprint in proj.sprints.all():
+
             if sprint.tasks.filter(id=task['id']).first() != None:
                 task['in_sprint'] = sprint.number
                 break

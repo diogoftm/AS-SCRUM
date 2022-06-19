@@ -96,6 +96,7 @@ clear: both;
                 <th>Task <a href="/projects/{{project.id}}/add_task"><button type="button" class="btn btn-primary btn-sm" >Create</button></a></th>
                 <th>Description</th>
                 <th>Sprint</th>
+                  <th>State</th>
               </tr>
           {% for task in tasks %}
 
@@ -148,6 +149,9 @@ clear: both;
                     <p>{{task.in_sprint}}</p>
 
                     {% endif %}
+                </td>
+                <td>
+                    <h6 class="card-title">{{task.state_str}}</h6>
                 </td>
             {% endif %}
         {% endfor %}
@@ -204,6 +208,9 @@ clear: both;
 
                     {% endif %}
                 </td>
+                <td>
+                    <h6 class="card-title">{{task.state_str}}</h6>
+                </td>
             {% endif %}
         {% endfor %}
                 {% for task in tasks %}
@@ -257,6 +264,9 @@ clear: both;
                     <p>{{task.in_sprint}}</p>
 
                     {% endif %}
+                </td>
+                <td>
+                    <h6 class="card-title">{{task.state_str}}</h6>
                 </td>
             {% endif %}
         {% endfor %}
@@ -312,6 +322,9 @@ clear: both;
 
                     {% endif %}
                 </td>
+                <td>
+                    <h6 class="card-title">{{task.state_str}}</h6>
+                </td>
             {% endif %}
         {% endfor %}
 
@@ -327,13 +340,13 @@ clear: both;
 
 
 
-                </td>
+
               </tr>   
             </table>
           </div>
                 </div>
      </div>
-  </div>
+
 </section>
 
 
