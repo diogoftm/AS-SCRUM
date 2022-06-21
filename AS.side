@@ -2,7 +2,7 @@
   "id": "92181779-6c85-4e03-91fc-3c707cf67edf",
   "version": "2.0",
   "name": "AS",
-  "url": "https://as-scrum.herokuapp.com/",
+  "url": "http://scrum-master-app.herokuapp.com",
   "tests": [{
     "id": "10fb1d54-8a0a-4901-8d7a-c9120ebe6cc3",
     "name": "Criar Conta cen#2",
@@ -10,7 +10,7 @@
       "id": "1a559852-972a-4b8e-af55-7b1cf4ef62c9",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -121,7 +121,7 @@
       "id": "19834720-af37-402d-815b-be0a0509d44f",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -198,7 +198,7 @@
       "id": "e0d9005d-93a4-4a39-ab95-d6d5c085367e",
       "comment": "",
       "command": "click",
-      "target": "linkText=Create task",
+      "target": "linkText=Create",
       "targets": [
         ["linkText=Create task", "linkText"],
         ["css=.card > a", "css:finder"],
@@ -477,7 +477,7 @@
       "id": "c3ea59b1-0539-47cd-af83-ee25b5bd6c8a",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -573,7 +573,7 @@
       "id": "b451ea7f-8042-4562-b4a3-b4234f51daf2",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -588,54 +588,28 @@
       "comment": "",
       "command": "type",
       "target": "id=id_username",
-      "targets": [
-        ["id=id_username", "id"],
-        ["name=username", "name"],
-        ["css=#id_username", "css:finder"],
-        ["xpath=//input[@id='id_username']", "xpath:attributes"],
-        ["xpath=//div[@id='div_id_username']/input", "xpath:idRelative"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
+      "targets": [],
       "value": "joao"
     }, {
       "id": "6babf81b-bd14-4ca5-a991-6c7219c35a2c",
       "comment": "",
       "command": "type",
       "target": "id=id_password",
-      "targets": [
-        ["id=id_password", "id"],
-        ["name=password", "name"],
-        ["css=#id_password", "css:finder"],
-        ["xpath=//input[@id='id_password']", "xpath:attributes"],
-        ["xpath=//div[@id='div_id_password']/input", "xpath:idRelative"],
-        ["xpath=//div[2]/input", "xpath:position"]
-      ],
+      "targets": [],
       "value": "testar123"
     }, {
       "id": "d6a2643c-4c12-4c7c-8c63-6f701fbbb585",
       "comment": "",
       "command": "sendKeys",
       "target": "id=id_password",
-      "targets": [
-        ["id=id_password", "id"],
-        ["name=password", "name"],
-        ["css=#id_password", "css:finder"],
-        ["xpath=//input[@id='id_password']", "xpath:attributes"],
-        ["xpath=//div[@id='div_id_password']/input", "xpath:idRelative"],
-        ["xpath=//div[2]/input", "xpath:position"]
-      ],
+      "targets": [],
       "value": "${KEY_ENTER}"
     }, {
       "id": "e9d4c569-5dec-494c-a9b9-5bc40c323019",
       "comment": "",
       "command": "click",
       "target": "css=.btn",
-      "targets": [
-        ["css=.btn", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//form/button", "xpath:position"],
-        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
-      ],
+      "targets": [],
       "value": ""
     }, {
       "id": "6dfe1365-b1b9-47df-a8d8-9de3093cc013",
@@ -663,7 +637,7 @@
       "id": "4af8544e-91ea-465c-bd7f-9471c78c1af6",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -883,7 +857,7 @@
       "id": "a9e7d7da-f535-430a-9154-66994b59aea4",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -1091,7 +1065,7 @@
       "id": "d1701f5f-5572-43e7-bcc7-0a998cb5105d",
       "comment": "",
       "command": "open",
-      "target": "https://as-scrum.herokuapp.com/",
+      "target": "http://scrum-master-app.herokuapp.com",
       "targets": [],
       "value": ""
     }, {
@@ -1217,6 +1191,6 @@
     "timeout": 300,
     "tests": ["10fb1d54-8a0a-4901-8d7a-c9120ebe6cc3", "c951e987-c759-43e4-9c4c-81a0293df039", "0cc744a0-6fea-40a4-a58e-a02372decc11", "2141938a-183f-4392-8ae3-03b723a333a3", "f8c2d011-dbe1-4340-abef-c067c1c3c9eb", "e9cad4d7-7baa-4c3e-8566-7bfdad0677b7", "ff765812-dcd2-49f3-b376-d18d458ec54e"]
   }],
-  "urls": ["https://as-scrum.herokuapp.com/", "http://127.0.0.1:8000/join_project/", "http://127.0.0.1:8000/"],
+  "urls": ["https://as-scrum.herokuapp.com/", "http://127.0.0.1:8000/join_project/", "http://127.0.0.1:8000/", "http://scrum-master-app.herokuapp.com/"],
   "plugins": []
 }
